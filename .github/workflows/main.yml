@@ -1,0 +1,27 @@
+name: Deploy Serverless Lambda
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:      
+      - name: 🌍 Define Stage based on branch
+        run: |
+            echo "STAGE=stg" >> $GITHUB_ENV
+      - name: 🔑 Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: "AccessKey"
+          aws-secret-access-key: "SecretKey"
+          aws-region: us-east-1
+      - name: validar rama
+        run: |
+          if [[ "${{github.base_ref}}" == "main" || "${{github.ref}}" == #refs/heads/main" ]]; then
+            echo "rama main"
+          fi
+         
