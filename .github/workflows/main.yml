@@ -16,7 +16,7 @@ jobs:
 
       - name: validar rama
         run: |
-          if [[ "${{github.base_ref}}" == "main" || "${{github.ref}}" == #refs/heads/main" ]]; then
+          if [[ "${{github.base_ref}}" == "main" || "${{github.ref}}" == "refs/heads/main" ]]; then
             echo "rama main"
           fi
          
